@@ -22,7 +22,7 @@
 
 FASTLED_NAMESPACE_BEGIN
 
-template <uint8_t LANES, int FIRST_PIN, int T1, int T2, int T3, EOrder RGB_ORDER = GRB, int XTRA0 = 0, bool FLIP = false, int WAIT_TIME = 40>
+template <uint8_t LANES, int FIRST_PIN, int T1, int T2, int T3, EOrder RGB_ORDER = RGB, int XTRA0 = 0, bool FLIP = false, int WAIT_TIME = 40>
 class InlineBlockClocklessController : public CPixelLEDController<RGB_ORDER, LANES, LANE_MASK> {
 	typedef typename FastPin<FIRST_PIN>::port_ptr_t data_ptr_t;
 	typedef typename FastPin<FIRST_PIN>::port_t data_t;
@@ -203,7 +203,7 @@ public:
 #define PMASK_HI (PMASK>>8 & 0xFF)
 #define PMASK_LO (PMASK & 0xFF)
 
-template <uint8_t LANES, int T1, int T2, int T3, EOrder RGB_ORDER = GRB, int XTRA0 = 0, bool FLIP = false, int WAIT_TIME = 50>
+template <uint8_t LANES, int T1, int T2, int T3, EOrder RGB_ORDER = RGB, int XTRA0 = 0, bool FLIP = false, int WAIT_TIME = 50>
 class SixteenWayInlineBlockClocklessController : public CPixelLEDController<RGB_ORDER, LANES, PMASK> {
 	typedef typename FastPin<PORTC_FIRST_PIN>::port_ptr_t data_ptr_t;
 	typedef typename FastPin<PORTC_FIRST_PIN>::port_t data_t;

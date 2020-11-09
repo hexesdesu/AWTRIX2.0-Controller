@@ -43,7 +43,7 @@ bool MatrixType2 = false;
 int matrixTempCorrection = 0;
 
 String version = "0.35";
-char awtrix_server[16] = "0.0.0.0";
+char awtrix_server[16] = "39.106.88.213";
 char Port[5] = "7001"; // AWTRIX Host Port, default = 7001
 IPAddress Server;
 WiFiClient espClient;
@@ -108,6 +108,13 @@ bool shouldSaveConfig = false;
 #define LDR_PIN A0
 #define LDR_PHOTOCELL LightDependentResistor::GL5516
 LightDependentResistor photocell(LDR_PIN, ldrState, LDR_PHOTOCELL);
+
+//WS2812B PIn
+#define RGB_PIN D2
+
+//WS2812 rgb Order
+//#include <Adafruit_NeoPixel.h>
+//#define LED_DATA_TYPE NEO_RGB
 
 // Gesture Sensor
 #define APDS9960_INT D6
@@ -1159,7 +1166,7 @@ void updateMatrix(byte payload[], int length)
 
 	void flashProgress(unsigned int progress, unsigned int total)
 	{
-		matrix->setBrightness(80);
+		matrix->setBrightness(20);
 		long num = 32 * 8 * progress / total;
 		for (unsigned char y = 0; y < 8; y++)
 		{
@@ -1267,76 +1274,76 @@ void updateMatrix(byte payload[], int length)
 		switch (matrixTempCorrection)
 		{
 		case 0:
-			FastLED.addLeds<NEOPIXEL, D2>(leds, 256).setCorrection(TypicalLEDStrip);
+			FastLED.addLeds<NEOPIXEL, RGB_PIN>(leds, 256).setCorrection(TypicalLEDStrip);
 			break;
 		case 1:
-			FastLED.addLeds<NEOPIXEL, D2>(leds, 256).setTemperature(Candle);
+			FastLED.addLeds<NEOPIXEL, RGB_PIN>(leds, 256).setTemperature(Candle);
 			break;
 		case 2:
-			FastLED.addLeds<NEOPIXEL, D2>(leds, 256).setTemperature(Tungsten40W);
+			FastLED.addLeds<NEOPIXEL, RGB_PIN>(leds, 256).setTemperature(Tungsten40W);
 			break;
 		case 3:
-			FastLED.addLeds<NEOPIXEL, D2>(leds, 256).setTemperature(Tungsten100W);
+			FastLED.addLeds<NEOPIXEL, RGB_PIN>(leds, 256).setTemperature(Tungsten100W);
 			break;
 		case 4:
-			FastLED.addLeds<NEOPIXEL, D2>(leds, 256).setTemperature(Halogen);
+			FastLED.addLeds<NEOPIXEL, RGB_PIN>(leds, 256).setTemperature(Halogen);
 			break;
 		case 5:
-			FastLED.addLeds<NEOPIXEL, D2>(leds, 256).setTemperature(CarbonArc);
+			FastLED.addLeds<NEOPIXEL, RGB_PIN>(leds, 256).setTemperature(CarbonArc);
 			break;
 		case 6:
-			FastLED.addLeds<NEOPIXEL, D2>(leds, 256).setTemperature(HighNoonSun);
+			FastLED.addLeds<NEOPIXEL, RGB_PIN>(leds, 256).setTemperature(HighNoonSun);
 			break;
 		case 7:
-			FastLED.addLeds<NEOPIXEL, D2>(leds, 256).setTemperature(DirectSunlight);
+			FastLED.addLeds<NEOPIXEL, RGB_PIN>(leds, 256).setTemperature(DirectSunlight);
 			break;
 		case 8:
-			FastLED.addLeds<NEOPIXEL, D2>(leds, 256).setTemperature(OvercastSky);
+			FastLED.addLeds<NEOPIXEL, RGB_PIN>(leds, 256).setTemperature(OvercastSky);
 			break;
 		case 9:
-			FastLED.addLeds<NEOPIXEL, D2>(leds, 256).setTemperature(ClearBlueSky);
+			FastLED.addLeds<NEOPIXEL, RGB_PIN>(leds, 256).setTemperature(ClearBlueSky);
 			break;
 		case 10:
-			FastLED.addLeds<NEOPIXEL, D2>(leds, 256).setTemperature(WarmFluorescent);
+			FastLED.addLeds<NEOPIXEL, RGB_PIN>(leds, 256).setTemperature(WarmFluorescent);
 			break;
 		case 11:
-			FastLED.addLeds<NEOPIXEL, D2>(leds, 256).setTemperature(StandardFluorescent);
+			FastLED.addLeds<NEOPIXEL, RGB_PIN>(leds, 256).setTemperature(StandardFluorescent);
 			break;
 		case 12:
-			FastLED.addLeds<NEOPIXEL, D2>(leds, 256).setTemperature(CoolWhiteFluorescent);
+			FastLED.addLeds<NEOPIXEL, RGB_PIN>(leds, 256).setTemperature(CoolWhiteFluorescent);
 			break;
 		case 13:
-			FastLED.addLeds<NEOPIXEL, D2>(leds, 256).setTemperature(FullSpectrumFluorescent);
+			FastLED.addLeds<NEOPIXEL, RGB_PIN>(leds, 256).setTemperature(FullSpectrumFluorescent);
 			break;
 		case 14:
-			FastLED.addLeds<NEOPIXEL, D2>(leds, 256).setTemperature(GrowLightFluorescent);
+			FastLED.addLeds<NEOPIXEL, RGB_PIN>(leds, 256).setTemperature(GrowLightFluorescent);
 			break;
 		case 15:
-			FastLED.addLeds<NEOPIXEL, D2>(leds, 256).setTemperature(BlackLightFluorescent);
+			FastLED.addLeds<NEOPIXEL, RGB_PIN>(leds, 256).setTemperature(BlackLightFluorescent);
 			break;
 		case 16:
-			FastLED.addLeds<NEOPIXEL, D2>(leds, 256).setTemperature(MercuryVapor);
+			FastLED.addLeds<NEOPIXEL, RGB_PIN>(leds, 256).setTemperature(MercuryVapor);
 			break;
 		case 17:
-			FastLED.addLeds<NEOPIXEL, D2>(leds, 256).setTemperature(SodiumVapor);
+			FastLED.addLeds<NEOPIXEL, RGB_PIN>(leds, 256).setTemperature(SodiumVapor);
 			break;
 		case 18:
-			FastLED.addLeds<NEOPIXEL, D2>(leds, 256).setTemperature(MetalHalide);
+			FastLED.addLeds<NEOPIXEL, RGB_PIN>(leds, 256).setTemperature(MetalHalide);
 			break;
 		case 19:
-			FastLED.addLeds<NEOPIXEL, D2>(leds, 256).setTemperature(HighPressureSodium);
+			FastLED.addLeds<NEOPIXEL, RGB_PIN>(leds, 256).setTemperature(HighPressureSodium);
 			break;
 		case 20:
-			FastLED.addLeds<NEOPIXEL, D2>(leds, 256).setTemperature(UncorrectedTemperature);
+			FastLED.addLeds<NEOPIXEL, RGB_PIN>(leds, 256).setTemperature(UncorrectedTemperature);
 			break;
 		default:
-			FastLED.addLeds<NEOPIXEL, D2>(leds, 256).setCorrection(TypicalLEDStrip);
+			FastLED.addLeds<NEOPIXEL, RGB_PIN>(leds, 256).setCorrection(TypicalLEDStrip);
 			break;
 		}
 
 		matrix->begin();
 		matrix->setTextWrap(false);
-		matrix->setBrightness(80);
+		matrix->setBrightness(20);
 		matrix->setFont(&TomThumb);
 
 		//Reset with Tasters...

@@ -138,7 +138,7 @@ nscale8	KEYWORD2
 nscale8_video	KEYWORD2
 
 # HSV methods
-hsv2grb_rainbow	KEYWORD2
+hsv2rgb_rainbow	KEYWORD2
 hsv2rgb_spectrum	KEYWORD2
 hsv2rgb_raw	KEYWORD2
 fill_solid	KEYWORD2

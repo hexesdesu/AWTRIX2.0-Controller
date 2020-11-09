@@ -7,7 +7,7 @@
 
 FASTLED_NAMESPACE_BEGIN
 
-template<EOrder RGB_ORDER = GRB, uint8_t CHIP = WS2811_800kHz>
+template<EOrder RGB_ORDER = RGB, uint8_t CHIP = WS2811_800kHz>
 class COctoWS2811Controller : public CPixelLEDController<RGB_ORDER, 8, 0xFF> {
   OctoWS2811  *pocto;
   uint8_t *drawbuffer,*framebuffer;
